@@ -1,5 +1,6 @@
-import { getChannel, type Command } from "discord-bot-shared"
 import { ChannelType, SlashCommandBuilder } from "discord.js"
+import type { Command } from "discord-bot-shared"
+import { getChannel } from "discord-bot-shared"
 
 import { getAllMirrors } from "@/db/db.ts"
 

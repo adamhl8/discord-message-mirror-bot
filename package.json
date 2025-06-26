@@ -17,7 +17,7 @@
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "docker:push": "docker build --platform linux/amd64 . -t ghcr.io/adamhl8/discord-message-mirror-bot && docker push ghcr.io/adamhl8/discord-message-mirror-bot:latest",
-    "lint": "tsc --noEmit && prettier --write . && eslint .",
+    "lint": "tsc --noEmit && biome check --write",
     "prepare": "find .githooks -type f -exec ln -srf {} .git/hooks/ \\; || true",
     "start:prod": "prisma migrate deploy && bun ./src/index.ts"
   },
@@ -28,11 +28,9 @@
     "prisma": "^6.10.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.0.5",
     "@types/bun": "^1.2.17",
-    "eslint": "^9.29.0",
     "eslint-config-builder": "^0.21.2",
-    "prettier": "^3.6.1",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.0"
+    "typescript": "^5.8.3"
   }
 }

@@ -1,5 +1,5 @@
-import type { Command } from "discord-bot-shared"
 import { SlashCommandBuilder } from "discord.js"
+import type { Command } from "discord-bot-shared"
 
 import { saveMirror } from "@/db/db.ts"
 import { getMirrorId } from "@/utils.ts"

@@ -1,5 +1,6 @@
-import { getChannel, type Event } from "discord-bot-shared"
 import { ChannelType, Events } from "discord.js"
+import type { Event } from "discord-bot-shared"
+import { getChannel } from "discord-bot-shared"
 
 import { getMirrors } from "@/db/db.ts"
 
