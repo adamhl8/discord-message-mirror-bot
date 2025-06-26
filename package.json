@@ -13,14 +13,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf ./dist && tsc -p ./tsconfig.build.json",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "docker:push": "docker build --platform linux/amd64 . -t ghcr.io/adamhl8/discord-message-mirror-bot && docker push ghcr.io/adamhl8/discord-message-mirror-bot:latest",
     "lint": "tsc --noEmit && prettier --write . && eslint .",
     "prepare": "find .githooks -type f -exec ln -srf {} .git/hooks/ \\; || true",
-    "start:prod": "prisma migrate deploy && bun ./dist/index.js"
+    "start:prod": "prisma migrate deploy && bun ./src/index.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",

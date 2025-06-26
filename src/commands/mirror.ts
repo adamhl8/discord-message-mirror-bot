@@ -1,8 +1,8 @@
 import type { Command } from "discord-bot-shared"
 import { SlashCommandBuilder } from "discord.js"
 
-import { saveMirror } from "@/db/db.js"
-import { getMirrorId } from "@/utils.js"
+import { saveMirror } from "@/db/db.ts"
+import { getMirrorId } from "@/utils.ts"
 
 export const mirror: Command = {
   command: new SlashCommandBuilder()

@@ -1,7 +1,7 @@
 import { getChannel, type Command } from "discord-bot-shared"
 import { ChannelType, SlashCommandBuilder } from "discord.js"
 
-import { getAllMirrors } from "@/db/db.js"
+import { getAllMirrors } from "@/db/db.ts"
 
 export const list: Command = {
   command: new SlashCommandBuilder().setName("list").setDescription("List all mirrors").toJSON(),
