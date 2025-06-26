@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+  runtime  = "bun"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model GuildSettings {
+  id          String   @id
+  adminRoleId String?
+  mirrors     Mirror[]
+}
+
+model Mirror {
+  id            String        @id
+  channelAId    String
+  channelBId    String
+  guildId       String
+  guildSettings GuildSettings @relation(fields: [guildId], references: [id])
+}

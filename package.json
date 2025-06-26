@@ -1,0 +1,39 @@
+{
+  "name": "discord-message-mirror-bot",
+  "version": "0.1.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamhl8/discord-message-mirror-bot"
+  },
+  "author": {
+    "email": "adamhl@pm.me",
+    "name": "Adam Langbert",
+    "url": "https://github.com/adamhl8"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc -p ./tsconfig.build.json",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio",
+    "docker:push": "docker build --platform linux/amd64 . -t ghcr.io/adamhl8/discord-message-mirror-bot && docker push ghcr.io/adamhl8/discord-message-mirror-bot:latest",
+    "lint": "tsc --noEmit && prettier --write . && eslint .",
+    "prepare": "find .githooks -type f -exec ln -srf {} .git/hooks/ \\; || true",
+    "start:prod": "prisma migrate deploy && bun ./dist/index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.10.1",
+    "discord-bot-shared": "^0.14.1",
+    "discord.js": "^14.21.0",
+    "prisma": "^6.10.1"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.17",
+    "eslint": "^9.29.0",
+    "eslint-config-builder": "^0.21.2",
+    "prettier": "^3.6.1",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.0"
+  }
+}
