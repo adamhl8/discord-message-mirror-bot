@@ -10,16 +10,15 @@
         "prisma": "^6.10.1",
       },
       "devDependencies": {
-        "@adamhl8/configs": "^0.2.0",
+        "@adamhl8/configs": "^0.3.0",
         "@biomejs/biome": "^2.0.6",
         "@types/bun": "^1.2.17",
-        "prettier": "^3.6.2",
         "typescript": "^5.8.3",
       },
     },
   },
   "packages": {
-    "@adamhl8/configs": ["@adamhl8/configs@0.2.0", "", { "dependencies": { "@prettier/plugin-xml": "^3.4.1", "prettier-plugin-astro": "^0.14.1", "prettier-plugin-sh": "^0.18.0", "prettier-plugin-tailwindcss": "^0.6.13", "prettier-plugin-toml": "^2.0.5" } }, "sha512-WOcWHzf01AhQbU2Ta6d0+ErpTy47SUP1G2KVkDjUAshd3PB4zLWaPva8R+GBXXvf+QD2BKbEXW88gb+HUXV2MA=="],
+    "@adamhl8/configs": ["@adamhl8/configs@0.3.0", "", { "dependencies": { "@prettier/plugin-xml": "^3.4.1", "prettier-plugin-astro": "^0.14.1", "prettier-plugin-sh": "^0.18.0", "prettier-plugin-tailwindcss": "^0.6.13", "prettier-plugin-toml": "^2.0.5" } }, "sha512-zWQu8xnognxMlDrRApE1205ntf74H1CqEY1fwdV3J14oy9YFkJILTNwBZjTNwAabqA6MYQoASYyV3p3UXlaYuQ=="],
 
     "@astrojs/compiler": ["@astrojs/compiler@2.12.2", "", {}, "sha512-w2zfvhjNCkNMmMMOn5b0J8+OmUaBL1o40ipMvqcG6NRpdC+lKxmTi48DT8Xw0SzJ3AfmeFLB45zXZXtmbsjcgw=="],
 
