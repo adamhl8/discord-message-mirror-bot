@@ -23,12 +23,12 @@
   },
   "dependencies": {
     "@prisma/client": "^6.11.0",
-    "discord-bot-shared": "^0.14.2",
+    "discord-bot-shared": "^0.14.3",
     "discord.js": "^14.21.0",
     "prisma": "^6.11.0"
   },
   "devDependencies": {
-    "@adamhl8/configs": "^0.4.2",
+    "@adamhl8/configs": "^0.7.0",
     "@biomejs/biome": "^2.0.6",
     "@types/bun": "^1.2.17",
     "typescript": "^5.8.3"

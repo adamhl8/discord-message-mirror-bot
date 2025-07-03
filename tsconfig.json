@@ -1,8 +1,7 @@
 {
   "extends": "@adamhl8/configs/tsconfig",
   "compilerOptions": {
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   }
 }
