@@ -1,6 +1,6 @@
 import type { Bot } from "discord-bot-shared"
 
-import { messageCreate } from "@/events/message-create.ts"
+import { messageCreate } from "~/events/message-create.ts"
 
 /**
  * @param bot The bot

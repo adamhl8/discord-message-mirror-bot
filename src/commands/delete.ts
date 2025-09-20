@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from "discord.js"
 import type { Command } from "discord-bot-shared"
 
-import { deleteMirror } from "@/db/db.ts"
+import { deleteMirror } from "~/db/db.ts"
 
 export const deleteCommand: Command = {
   command: new SlashCommandBuilder()

@@ -2,7 +2,7 @@ import { ChannelType, Events } from "discord.js"
 import type { Event } from "discord-bot-shared"
 import { getChannel } from "discord-bot-shared"
 
-import { getMirrors } from "@/db/db.ts"
+import { getMirrors } from "~/db/db.ts"
 
 export const messageCreate: Event = {
   event: Events.MessageCreate,
