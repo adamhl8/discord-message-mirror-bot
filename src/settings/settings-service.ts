@@ -6,7 +6,7 @@ import { getSettingsOrThrow, saveSettings } from "~/settings/settings-db.ts"
 /**
  * @param interaction The interaction that triggered the command
  */
-async function listSettings(interaction: ChatInputCommandInteraction<"cached">) {
+export async function listSettings(interaction: ChatInputCommandInteraction<"cached">) {
   const guild = interaction.guild
   const settings = await getSettingsOrThrow(guild.id)
 
@@ -20,7 +20,7 @@ async function listSettings(interaction: ChatInputCommandInteraction<"cached">) 
 /**
  * @param interaction The interaction that triggered the command
  */
-async function setSettings(interaction: ChatInputCommandInteraction<"cached">) {
+export async function setSettings(interaction: ChatInputCommandInteraction<"cached">) {
   const adminRoleId = interaction.options.getRole("admin-role", false)?.id
 
   const settings: GuildSettings = {
@@ -32,5 +32,3 @@ async function setSettings(interaction: ChatInputCommandInteraction<"cached">) {
   await saveSettings(settings)
   await listSettings(interaction)
 }
-
-export { listSettings, setSettings }
