@@ -1,6 +1,6 @@
 {
   "name": "discord-message-mirror-bot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "A Discord bot that mirrors messages from one channel to another.",
   "license": "MIT",
