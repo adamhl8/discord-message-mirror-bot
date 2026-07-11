@@ -13,7 +13,7 @@ services:
     image: ghcr.io/adamhl8/discord-message-mirror-bot
     restart: always
     volumes:
-      - ./data/:/app/prisma/db/
+      - ./data/:/app/db/
     environment:
       APPLICATION_ID: <YOUR_APPLICATION_ID>
       BOT_TOKEN: <YOUR_BOT_TOKEN>

@@ -1,11 +1,12 @@
 generator client {
-  provider = "prisma-client-js"
-  runtime  = "bun"
+  provider        = "prisma-client"
+  previewFeatures = ["strictUndefinedChecks"]
+  output          = "../src/generated/prisma"
+  runtime         = "bun"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
 }
 
 model GuildSettings {

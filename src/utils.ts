@@ -1,39 +1,41 @@
-import type { Guild, GuildMember } from "discord.js"
-import { throwError } from "discord-bot-shared"
+import type { Bot } from "discord-bot-shared"
+import type { GuildMember } from "discord.js"
+import type { Result } from "ts-explicit-errors"
+import { attempt, isErr } from "ts-explicit-errors"
 
-import { getSettings } from "~/settings/settings-db.ts"
+import { prisma } from "#db.ts"
+import { getSettings } from "#settings/settings-db.ts"
 
-/**
- * @param member The member to check
- * @returns Whether the member is a moderator
- */
-export async function hasPermissions(member: GuildMember) {
+/** Whether the member is an admin or has the configured admin role */
+export const hasPermissions = async (member: GuildMember): Promise<Result<boolean>> => {
   const isAdmin = member.permissions.has("Administrator")
-  const settings = await getSettings(member.guild.id)
-  const adminRoleId = settings?.adminRoleId
+  const settings = await getSettings(member.guild)
+  if (isErr(settings)) return settings
 
-  return isAdmin || (adminRoleId && member.roles.cache.has(adminRoleId))
+  if (!settings.adminRoleId) return isAdmin
+
+  return member.roles.cache.has(settings.adminRoleId) || isAdmin
 }
 
-/**
- * @param guild The guild
- * @param id The ID of the member
- * @returns The member
- */
-export async function fetchMemberById(guild: Guild, id: string) {
-  const members = await guild.members.fetch()
-  return members.get(id) ?? throwError(`Failed to get member with ID: ${id}`)
+export const registerShutdown = (bot: Bot) => {
+  const shutdown = async (signal: NodeJS.Signals) => {
+    console.log(`received ${signal}, shutting down`)
+    const result = await attempt(async () => {
+      await bot.logout()
+      await prisma.$disconnect()
+    })
+
+    const shutdownError = isErr(result)
+    if (shutdownError) console.error(`error during shutdown: ${result.messageChain}`)
+    process.exitCode = shutdownError ? 1 : 0
+  }
+  process.on("SIGTERM", (signal) => void shutdown(signal))
+  process.on("SIGINT", (signal) => void shutdown(signal))
 }
 
-/**
- * @param channelAId The ID of the first channel
- * @param channelBId The ID of the second channel
- * @returns The mirror ID
- */
-export function getMirrorId(channelAId: string, channelBId: string) {
+export const getMirrorId = (channelAId: string, channelBId: string): string => {
   const combined = `${channelAId}-${channelBId}`
-  const hasher = new Bun.CryptoHasher("sha256")
-  const hash = hasher.update(combined).digest("hex")
+  const hash = new Bun.CryptoHasher("sha256").update(combined).digest("hex")
 
   return hash.slice(0, 8).trim()
 }

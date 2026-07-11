@@ -1,34 +1,34 @@
-import type { GuildSettings } from "@prisma/client"
 import type { ChatInputCommandInteraction } from "discord.js"
+import type { Result } from "ts-explicit-errors"
+import { attempt, err, isErr } from "ts-explicit-errors"
 
-import { getSettingsOrThrow, saveSettings } from "~/settings/settings-db.ts"
+import { getSettings, saveSettings } from "#settings/settings-db.ts"
 
-/**
- * @param interaction The interaction that triggered the command
- */
-export async function listSettings(interaction: ChatInputCommandInteraction<"cached">) {
-  const guild = interaction.guild
-  const settings = await getSettingsOrThrow(guild.id)
+export const listSettings = async (interaction: ChatInputCommandInteraction<"cached">): Promise<Result> => {
+  const { guild } = interaction
 
-  const adminRole = settings.adminRoleId ? await guild.roles.fetch(settings.adminRoleId) : undefined
+  const settings = await getSettings(guild)
+  if (isErr(settings)) return settings
 
-  const currentSettings = `Current Settings:\n\`\`\`\nAdmin Role: ${adminRole?.name ?? "Not set"}\n\`\`\``
+  const adminRoleResult = await attempt(async () => {
+    if (!settings.adminRoleId) return
+    const role = await guild.roles.fetch(settings.adminRoleId)
+    return role.toString()
+  })
+  if (isErr(adminRoleResult)) return err("failed to fetch admin role", adminRoleResult)
+  const adminRole = adminRoleResult ?? "_Not set_"
 
-  await interaction.reply(currentSettings)
+  const replyResult = await attempt(async () =>
+    interaction.reply(`## Current Settings\n\n**Admin Role:** ${adminRole}`),
+  )
+  if (isErr(replyResult)) return err("failed to reply with current settings", replyResult)
 }
 
-/**
- * @param interaction The interaction that triggered the command
- */
-export async function setSettings(interaction: ChatInputCommandInteraction<"cached">) {
-  const adminRoleId = interaction.options.getRole("admin-role", false)?.id
+export const setSettings = async (interaction: ChatInputCommandInteraction<"cached">): Promise<Result> => {
+  const adminRoleId = interaction.options.getRole("admin-role", false)?.id ?? null
 
-  const settings: GuildSettings = {
-    id: interaction.guild.id,
-    // eslint-disable-next-line unicorn/no-null
-    adminRoleId: adminRoleId ?? null,
-  }
+  const settings = await saveSettings(interaction.guild, { adminRoleId })
+  if (isErr(settings)) return settings
 
-  await saveSettings(settings)
-  await listSettings(interaction)
+  return listSettings(interaction)
 }

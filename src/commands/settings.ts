@@ -1,27 +1,28 @@
-import { SlashCommandBuilder } from "discord.js"
 import type { Command } from "discord-bot-shared"
+import { ChatInputCommandBuilder } from "discord.js"
+import { isErr } from "ts-explicit-errors"
 
-import { listSettings, setSettings } from "~/settings/settings-service.ts"
+import { listSettings, setSettings } from "#settings/settings-service.ts"
 
 export const settings: Command = {
-  command: new SlashCommandBuilder()
+  command: new ChatInputCommandBuilder()
     .setName("settings")
     .setDescription("Configure message-mirror-bot")
-    .addSubcommand((subcommand) => subcommand.setName("list").setDescription("List current settings"))
-    .addSubcommand((subcommand) =>
+    .addSubcommands((subcommand) => subcommand.setName("list").setDescription("List current settings"))
+    .addSubcommands((subcommand) =>
       subcommand
         .setName("set")
         .setDescription("Set all message-mirror-bot settings")
-        .addRoleOption((option) =>
+        .addRoleOptions((option) =>
           option
             .setName("admin-role")
             .setDescription("Members must have this role to interact with message-mirror-bot"),
         ),
-    )
-    .toJSON(),
-  async run(interaction) {
+    ),
+  run: async (interaction) => {
     const subcommand = interaction.options.getSubcommand()
-    if (subcommand === "list") await listSettings(interaction)
-    if (subcommand === "set") await setSettings(interaction)
+
+    const result = subcommand === "set" ? await setSettings(interaction) : await listSettings(interaction)
+    if (isErr(result)) throw new Error(result.messageChain)
   },
 }
