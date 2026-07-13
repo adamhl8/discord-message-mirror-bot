@@ -1,18 +1,18 @@
 {
-  "lockfileVersion": 2,
+  "lockfileVersion": 1,
   "configVersion": 1,
   "workspaces": {
     "": {
       "name": "discord-message-mirror-bot",
       "dependencies": {
-        "@adamhl8/configs": "^1.5.0",
+        "@adamhl8/configs": "^2.2.0",
         "@prisma/adapter-libsql": "^7.8.0",
         "@prisma/client": "^7.8.0",
         "arkenv": "^0.12.2",
-        "discord-bot-shared": "^1.0.1",
+        "discord-bot-shared": "^1.0.2",
         "discord.js": "^15.0.0-dev.1783513686-6e81ea771",
         "prisma": "^7.8.0",
-        "ts-explicit-errors": "^4.1.2",
+        "ts-explicit-errors": "^4.1.3",
       },
       "devDependencies": {
         "@commitlint/cli": "^21.2.1",
@@ -29,7 +29,7 @@
     },
   },
   "packages": {
-    "@adamhl8/configs": ["@adamhl8/configs@1.5.0", "", { "dependencies": { "@adamhl8/eslint-plugin-clean-modules": "^0.1.4", "@commitlint/config-conventional": "^21.2.0", "@commitlint/types": "^21.2.0", "arkenv": "^0.12.2", "arktype": "^2.2.3", "es-toolkit": "^1.49.0", "smol-toml": "^1.7.0", "ts-explicit-errors": "^4.1.2", "ts-extras": "^1.2.0", "type-fest": "^5.8.0" }, "peerDependencies": { "@arethetypeswrong/core": ">=0.18", "@commitlint/cli": ">=21", "knip": ">=6", "markdown-toc": ">=1", "oxfmt": ">=0.50", "oxlint": ">=1", "oxlint-tsgolint": ">=0.24", "publint": ">=0.3", "release-it": ">=19", "tsdown": ">=0.20", "typescript": "^7.0.0" }, "optionalPeers": ["@arethetypeswrong/core", "@commitlint/cli", "knip", "markdown-toc", "oxfmt", "oxlint", "oxlint-tsgolint", "publint", "release-it", "tsdown"], "bin": { "adamhl8-bunfig": "dist/adamhl8-bunfig/index", "adamhl8-cliff": "dist/adamhl8-cliff/index", "adamhl8-gitignore": "dist/adamhl8-gitignore/index" } }, "sha512-/G4O1U7FjYsoNIoYJo92PVuMaejbZwzZQrGS8QHt3xNJW5lERYw4+TcZLcezr+EPlQUGn26Fy79MPSTbVWu8nw=="],
+    "@adamhl8/configs": ["@adamhl8/configs@2.2.0", "", { "dependencies": { "@adamhl8/eslint-plugin-clean-modules": "^0.1.4", "@commitlint/config-conventional": "^21.2.0", "@commitlint/types": "^21.2.0", "arkenv": "^0.12.2", "arktype": "^2.2.3", "es-toolkit": "^1.49.0", "smol-toml": "^1.7.0", "ts-explicit-errors": "^4.1.2", "ts-extras": "^1.2.0", "type-fest": "^5.8.0" }, "peerDependencies": { "@arethetypeswrong/core": ">=0.18", "@commitlint/cli": ">=21", "knip": ">=6", "markdown-toc": ">=1", "oxfmt": ">=0.50", "oxlint": ">=1", "oxlint-tsgolint": ">=0.24", "publint": ">=0.3", "release-it": ">=19", "tsdown": ">=0.20", "typescript": "^7.0.0" }, "optionalPeers": ["@arethetypeswrong/core", "@commitlint/cli", "knip", "markdown-toc", "oxfmt", "oxlint", "oxlint-tsgolint", "publint", "release-it", "tsdown"], "bin": { "adamhl8-bunfig": "dist/adamhl8-bunfig/index", "adamhl8-cliff": "dist/adamhl8-cliff/index", "adamhl8-gitignore": "dist/adamhl8-gitignore/index" } }, "sha512-kIhbXKKIsVOA3yMSSMtDz8DTypPlCfS70Jl1A7oR+f7sHgrfYw8+IOMYMYeqTy/SIWS+4D0t4asgFAtcdiO5Sg=="],
 
     "@adamhl8/eslint-plugin-clean-modules": ["@adamhl8/eslint-plugin-clean-modules@0.1.4", "", { "dependencies": { "@typescript-eslint/types": "^8.63.0", "@typescript-eslint/utils": "^8.63.0" } }, "sha512-Vhw/WAyCAnWgkcOydiT+bB+dsZxWvOPMo5kmTX7ltzmh9aAfWBokvxZEpijxw8nNMnGjgLcAuuZi2Baa6QkZLQ=="],
 
@@ -647,7 +647,7 @@
 
     "discord-api-types": ["discord-api-types@0.38.49", "", {}, "sha512-XnqcWmnFZFAE8ZM8SHAw9DIV8D3Or00rMQ8iQLotrEA2PmXhl+ykaf6L6q4l474hrSUH1JaYcv+iOMRWp2p6Tg=="],
 
-    "discord-bot-shared": ["discord-bot-shared@1.0.1", "", { "dependencies": { "ts-explicit-errors": "^4.1.2" }, "peerDependencies": { "discord.js": "^15.0.0" } }, "sha512-KKJK7BdqwzUuIFO2pOm4CTynnWTALRPJ7MF8SaGHrKCc+XJvd9jI5V50z2/rsFECTL4PzfMDbOpxz+eDMb/m0w=="],
+    "discord-bot-shared": ["discord-bot-shared@1.0.2", "", { "dependencies": { "ts-explicit-errors": "^4.1.3" }, "peerDependencies": { "discord.js": "^15.0.0" } }, "sha512-YcILCn18Sv1kJcXlGOErMBnI/q42thPn5JLtFb0HNFybpVKndRznA66Zgxw7SbRApQujaxmkgfhe8uuG2j5n9g=="],
 
     "discord.js": ["discord.js@15.0.0-pr-11006.1765452229-e636950b2", "", { "dependencies": { "@discordjs/builders": "2.0.0-pr-11006.1765452229-e636950b2", "@discordjs/collection": "3.0.0-pr-11006.1765452229-e636950b2", "@discordjs/formatters": "1.0.0-pr-11006.1765452229-e636950b2", "@discordjs/rest": "3.0.0-pr-11006.1765452229-e636950b2", "@discordjs/util": "2.0.0-pr-11006.1765452229-e636950b2", "@discordjs/ws": "3.0.0-pr-11006.1765452229-e636950b2", "@sapphire/snowflake": "3.5.5", "@vladfrangu/async_event_emitter": "^2.4.7", "discord-api-types": "^0.38.36", "fast-deep-equal": "3.1.3", "lodash.snakecase": "4.1.1", "magic-bytes.js": "^1.12.1", "tslib": "^2.8.1", "undici": "7.16.0" } }, "sha512-3IifLX4ea/WgtqMtYMffsnD9AlROOnDw3gTmhFHtuTQBhVwHzRd6Q+aGCiMfwzYSzyY0zYZAnkFG5smPxMJDfQ=="],
 
@@ -765,7 +765,7 @@
 
     "gulp-header": ["gulp-header@1.8.12", "", { "dependencies": { "concat-with-sourcemaps": "*", "lodash.template": "^4.4.0", "through2": "^2.0.0" } }, "sha512-lh9HLdb53sC7XIZOYzTXM4lFuXElv3EVkSDhsd7DoJBj7hm+Ni7D3qYbb+Rr8DuM8nRanBvkVO9d7askreXGnQ=="],
 
-    "hono": ["hono@4.12.29", "", {}, "sha512-1hNiRjawYrLq/4m3DQQjPGFg0VZkk4RjQJDff/excI6Dm9BiL75qxGrd7/c6YOxPdq6AscP3LiXhQ6fKFC1Waw=="],
+    "hono": ["hono@4.12.30", "", {}, "sha512-emn+JoJjrN9YTpRDS5it/UI2SO9BAE37T6I3d963RxcZ81G9A4pr2SZTEiiaiKbzx+NKRg5BZ89fCL7gCJCUog=="],
 
     "http-proxy-agent": ["http-proxy-agent@8.0.0", "", { "dependencies": { "agent-base": "8.0.0", "debug": "^4.3.4" } }, "sha512-7pose0uGgrCJeH2Qh4JcNhWZp3u/oNrWjNYDK4ydOLxOpTw8V8ogHFAmkz0VWq96JBFj4umVJpvmQi287rSYLg=="],
 
@@ -1107,7 +1107,7 @@
 
     "ts-api-utils": ["ts-api-utils@2.5.0", "", { "peerDependencies": { "typescript": ">=4.8.4" } }, "sha512-OJ/ibxhPlqrMM0UiNHJ/0CKQkoKF243/AEmplt3qpRgkW8VG7IfOS41h7V8TjITqdByHzrjcS/2si+y4lIh8NA=="],
 
-    "ts-explicit-errors": ["ts-explicit-errors@4.1.2", "", {}, "sha512-Q/dhB5IZV4xq+kIuMmKvhFig1vALZK12z0zFoqR4fVJIgw5CPGq/vWQVreNDFGP/Km4O5x1m9CsJk6KcRaoC+Q=="],
+    "ts-explicit-errors": ["ts-explicit-errors@4.1.3", "", {}, "sha512-zmTBfN47ZjalqQkvNi730a+jchOwP7LwvdpUj42bnfPK1NDh2j459xwDjJGk2WPARZFH5XTiuBR4fH+F4VyCSQ=="],
 
     "ts-extras": ["ts-extras@1.2.0", "", { "dependencies": { "type-fest": "^5.0.1" } }, "sha512-pHnzPMS+k9kZNFNi2YBHxA0edTEMVPEu6/2Jg1z1HjS202kNSbXLjhMT1yq4Zv0zthY2NVpGa2NkLS2zqkxy6g=="],
 

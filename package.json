@@ -2,7 +2,12 @@
   "name": "discord-message-mirror-bot",
   "version": "0.1.1",
   "private": true,
-  "description": "A Discord bot that mirrors messages from one channel to another.",
+  "description": "A Discord bot that mirrors messages from one channel to another",
+  "keywords": [
+    "discord",
+    "discord-bot",
+    "discord-js"
+  ],
   "license": "MIT",
   "author": {
     "name": "Adam Langbert",
@@ -22,14 +27,14 @@
     "prepare": "just prepare"
   },
   "dependencies": {
-    "@adamhl8/configs": "^1.5.0",
+    "@adamhl8/configs": "^2.2.0",
     "@prisma/adapter-libsql": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "arkenv": "^0.12.2",
-    "discord-bot-shared": "^1.0.1",
+    "discord-bot-shared": "^1.0.2",
     "discord.js": "^15.0.0-dev.1783513686-6e81ea771",
     "prisma": "^7.8.0",
-    "ts-explicit-errors": "^4.1.2"
+    "ts-explicit-errors": "^4.1.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.1",
