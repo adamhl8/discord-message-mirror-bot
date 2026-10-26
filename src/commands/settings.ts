@@ -1,6 +1,6 @@
+import { ChatInputCommandBuilder } from "@discordjs/builders"
 import type { Command } from "discord-bot-shared"
-import { ChatInputCommandBuilder } from "discord.js"
-import { isErr } from "ts-explicit-errors"
+import { isErr, messageChain } from "ts-explicit-errors"
 
 import { listSettings, setSettings } from "#settings/settings-service.ts"
 
@@ -23,6 +23,6 @@ export const settings: Command = {
     const subcommand = interaction.options.getSubcommand()
 
     const result = subcommand === "set" ? await setSettings(interaction) : await listSettings(interaction)
-    if (isErr(result)) throw new Error(result.messageChain)
+    if (isErr(result)) throw new Error(messageChain(result))
   },
 }

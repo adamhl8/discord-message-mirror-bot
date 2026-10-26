@@ -2,7 +2,7 @@ import { CryptoHasher } from "bun"
 import type { Bot } from "discord-bot-shared"
 import type { GuildMember } from "discord.js"
 import type { Result } from "ts-explicit-errors"
-import { attempt, isErr } from "ts-explicit-errors"
+import { attempt, isErr, messageChain } from "ts-explicit-errors"
 
 import { prisma } from "#db.ts"
 import { getSettings } from "#settings/settings-db.ts"
@@ -27,7 +27,7 @@ export const registerShutdown = (bot: Bot) => {
     })
 
     const shutdownError = isErr(result)
-    if (shutdownError) console.error(`error during shutdown: ${result.messageChain}`)
+    if (shutdownError) console.error(`error during shutdown: ${messageChain(result)}`)
     process.exitCode = shutdownError ? 1 : 0
   }
   process.on("SIGTERM", (signal) => void shutdown(signal))

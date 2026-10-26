@@ -1,6 +1,6 @@
+import { ChatInputCommandBuilder } from "@discordjs/builders"
 import type { Command } from "discord-bot-shared"
-import { ChatInputCommandBuilder } from "discord.js"
-import { isErr } from "ts-explicit-errors"
+import { isErr, messageChain } from "ts-explicit-errors"
 
 import { deleteMirror } from "#mirror/mirror-db.ts"
 
@@ -20,7 +20,7 @@ export const deleteCommand: Command = {
     const mirrorId = interaction.options.getString("mirror-id", true)
 
     const deleteMirrorResult = await deleteMirror(mirrorId, interaction.guild)
-    if (isErr(deleteMirrorResult)) throw new Error(deleteMirrorResult.messageChain)
+    if (isErr(deleteMirrorResult)) throw new Error(messageChain(deleteMirrorResult))
 
     await interaction.editReply(`Deleted mirror: \`${mirrorId}\``)
   },

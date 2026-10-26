@@ -25,6 +25,7 @@ export const listSettings = async (interaction: ChatInputCommandInteraction<"cac
 }
 
 export const setSettings = async (interaction: ChatInputCommandInteraction<"cached">): Promise<Result> => {
+  // oxlint-disable-next-line unicorn/no-null - Prisma skips `undefined` on update, so only `null` clears the role
   const adminRoleId = interaction.options.getRole("admin-role", false)?.id ?? null
 
   const settings = await saveSettings(interaction.guild, { adminRoleId })

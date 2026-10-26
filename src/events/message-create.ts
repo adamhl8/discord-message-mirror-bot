@@ -1,6 +1,6 @@
 import type { Event } from "discord-bot-shared"
 import { Events } from "discord.js"
-import { attempt, err, filterMap, isErr } from "ts-explicit-errors"
+import { attempt, err, filterMap, isErr, messageChain } from "ts-explicit-errors"
 
 import { getGuildTextChannel } from "#guild-utils.ts"
 import { getMirrors } from "#mirror/mirror-db.ts"
@@ -13,10 +13,10 @@ export const messageCreate: Event = {
     if (message.author.bot) return
 
     const guild = await attempt(async () => client.guilds.fetch(guildId))
-    if (isErr(guild)) throw new Error(err(`failed to fetch guild '${guildId}'`, guild).messageChain)
+    if (isErr(guild)) throw new Error(messageChain(err(`failed to fetch guild '${guildId}'`, guild)))
 
     const mirrors = await getMirrors(message.channelId, guild)
-    if (isErr(mirrors)) throw new Error(mirrors.messageChain)
+    if (isErr(mirrors)) throw new Error(messageChain(mirrors))
 
     const { errors: mirrorErrors } = await filterMap(mirrors, async (mirror) => {
       const channel = await getGuildTextChannel(guild, mirror.channelBId)
@@ -28,6 +28,6 @@ export const messageCreate: Event = {
       return sentMessage
     })
     if (mirrorErrors)
-      throw new Error(`failed to mirror message:\n${mirrorErrors.map((error) => error.messageChain).join("\n")}`)
+      throw new Error(`failed to mirror message:\n${mirrorErrors.map((error) => messageChain(error)).join("\n")}`)
   },
 }

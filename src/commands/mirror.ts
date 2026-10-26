@@ -1,6 +1,6 @@
+import { ChatInputCommandBuilder } from "@discordjs/builders"
 import type { Command } from "discord-bot-shared"
-import { ChatInputCommandBuilder } from "discord.js"
-import { isErr } from "ts-explicit-errors"
+import { isErr, messageChain } from "ts-explicit-errors"
 
 import { saveMirror } from "#mirror/mirror-db.ts"
 import { getMirrorId } from "#utils.ts"
@@ -31,7 +31,7 @@ export const mirror: Command = {
       channelAId,
       channelBId,
     })
-    if (isErr(saveMirrorResult)) throw new Error(saveMirrorResult.messageChain)
+    if (isErr(saveMirrorResult)) throw new Error(messageChain(saveMirrorResult))
 
     if (!oneWay) {
       const saveReverseMirrorResult = await saveMirror({
@@ -40,7 +40,7 @@ export const mirror: Command = {
         channelAId: channelBId,
         channelBId: channelAId,
       })
-      if (isErr(saveReverseMirrorResult)) throw new Error(saveReverseMirrorResult.messageChain)
+      if (isErr(saveReverseMirrorResult)) throw new Error(messageChain(saveReverseMirrorResult))
     }
 
     const reply = oneWay
