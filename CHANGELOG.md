@@ -1,3 +1,9 @@
+## [0.1.3](https://github.com/adamhl8/discord-message-mirror-bot/compare/v0.1.2..v0.1.3) - 2026-10-26
+
+### ⚙️ Miscellaneous Tasks
+
+- _(deps)_ update dependencies ([15fbbf2](https://github.com/adamhl8/discord-message-mirror-bot/commit/15fbbf289ea0b6f9d670b31faf8e34f8446428e9) by @adamhl8)
+
 ## [0.1.2](https://github.com/adamhl8/discord-message-mirror-bot/compare/v0.1.1..v0.1.2) - 2026-07-13
 
 ### ⚙️ Miscellaneous Tasks
